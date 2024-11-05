@@ -31,16 +31,16 @@ const AboutPage = () => {
         >
           <motion.div className="space-y-2 text-md  max-w-md leading-relaxed">
             <motion.p>
-              Hi there! I’m a Front-End Developer driven by a passion for
+              Hi there! I&#39;m a Front-End Developer driven by a passion for
               creating engaging, responsive web experiences. Proficient in HTML,
               CSS, and JavaScript, I also bring expertise in frameworks like
               React, Vue, and Next.js, blending creativity with efficiency in
               every project.
             </motion.p>
             <motion.p>
-              With each collaboration, I've gained insights and refined my
+              With each collaboration, I&#39;ve gained insights and refined my
               skills, building a portfolio that reflects my dedication to
-              quality and innovation. I’m always excited to explore emerging
+              quality and innovation. I&#39;m always excited to explore emerging
               technologies and take my craft to the next level.
             </motion.p>
           </motion.div>

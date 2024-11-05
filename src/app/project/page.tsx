@@ -23,9 +23,9 @@ const completedProjects = [
     description:
       "A detailed description of Project 1. dnkjfkjfkhjfkfkj fjkhfkjf fjkf fjkf fjkf f,jkjf f,jf ,dmkf fnkf fmfm ",
     techStack: [
-      <SiHtml5 size={"30"} />,
-      <SiCss3 size={"30"} />,
-      <SiJavascript size={"30"} />,
+      <SiHtml5 key="html5" size={"30"} />,
+      <SiCss3 key="css3" size={"30"} />,
+      <SiJavascript key="javascript" size={"30"} />,
     ],
   },
   {
@@ -34,10 +34,10 @@ const completedProjects = [
     image: "/general_bg.jpg",
     description: "A detailed description of Project 2",
     techStack: [
-      <SiReact size={"30"} />,
-      <SiVuedotjs size={"30"} />,
-      <SiNextdotjs size={"30"} />,
-      <SiFirebase size={"30"} />,
+      <SiReact key="react" size={"30"} />,
+      <SiVuedotjs key="vue" size={"30"} />,
+      <SiNextdotjs key="nextjs" size={"30"} />,
+      <SiFirebase key="firebase" size={"30"} />,
     ],
   },
 ];
