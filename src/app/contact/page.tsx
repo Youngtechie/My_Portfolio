@@ -1,6 +1,7 @@
 'use client'
 import { FaLinkedin, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { useState } from "react";
+import Link from "next/link";
 
 const ContactPage = () => {
   const [form, setForm] = useState({
@@ -28,32 +29,35 @@ const ContactPage = () => {
       <h1 className="text-3xl font-bold">Get in Touch</h1>
 
       <div className="flex space-x-6">
-        <a
-          href="https://linkedin.com"
+        <Link
+          href="https://www.linkedin.com/in/abdul-rahmon-ibn-qozeem-7a128b237?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
           target="_blank"
           rel="noopener noreferrer"
           className="text-3xl text-[#ffcc00] hover:text-[#f4b400] transition-colors"
         >
           <FaLinkedin />
-        </a>
-        <a
-          href="https://twitter.com"
+        </Link>
+        <Link
+          href="https://x.com/young__techie"
           target="_blank"
           rel="noopener noreferrer"
           className="text-3xl text-[#ffcc00] hover:text-[#f4b400] transition-colors"
         >
           <FaTwitter />
-        </a>
-        <a
+        </Link>
+        <Link
           href="https://wa.me/+2349020674910"
           target="_blank"
           rel="noopener noreferrer"
           className="text-3xl text-[#ffcc00] hover:text-[#f4b400] transition-colors"
         >
           <FaWhatsapp />
-        </a>
+        </Link>
+
+        
       </div>
 
+      
       <form
         onSubmit={handleSubmit}
         className="bg-gray-800 flex flex-col gap-3 p-4 rounded-lg w-full max-w-md shadow-lg"
