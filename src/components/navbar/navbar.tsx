@@ -1,11 +1,12 @@
-// Navbar.js
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./navbar.css";
 import { Header } from "../header/header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ref, getDownloadURL } from "firebase/storage";
+import { storage } from "../../../firebaseConfig";
 import {
   faHome,
   faCloudDownload,
@@ -17,15 +18,24 @@ import {
 export function Navbar() {
   const currentPath = usePathname();
   const [navbar, setNavbar] = useState(false);
+  const [pdfUrl, setPdfUrl] = useState('');
 
   const toggleNavbar = () => {
     setNavbar(!navbar);
   };
 
+  useEffect(() => {
+
+    const fileRef = ref(storage, "/AbdulRahmon_Olaegbe_Resume.pdf");
+
+    getDownloadURL(fileRef)
+      .then((url) => setPdfUrl(url))
+      .catch((error) => console.error("Error fetching download URL:", error));
+  }, []);
+
   return (
     <div>
       <Header onToggleNavbar={toggleNavbar} open={navbar} />
-
       <nav
         id="left-side-bar"
         className={`${navbar ? "flex" : "hidden"} lg:hidden nav_S`}
@@ -128,7 +138,7 @@ export function Navbar() {
             </Link>
           </ul>
           <div className="absolute bottom-10 flex w-full items-center justify-center">
-            <Link href="#">
+            <Link href={pdfUrl} target="_blank">
               <FontAwesomeIcon icon={faCloudDownload} color="white" size="2x" />
             </Link>
           </div>

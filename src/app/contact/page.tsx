@@ -1,27 +1,43 @@
-'use client'
+"use client";
 import { FaLinkedin, FaTwitter, FaWhatsapp } from "react-icons/fa";
-import { useState } from "react";
+import React, { useState, useRef, FormEvent } from "react";
+import emailjs from "emailjs-com";
 import Link from "next/link";
 
 const ContactPage = () => {
-  const [form, setForm] = useState({
-    fullName: "",
-    email: "",
-    message: "",
-  });
+  const formRef = useRef<HTMLFormElement>(null);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add form submission logic here
-    alert("Message sent!");
-    setForm({ fullName: "", email: "", message: "" });
+    setLoading(true);
+
+    try {
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_ENV_LOCAL_SERVICEID!,
+        process.env.NEXT_PUBLIC_ENV_LOCAL_TEMPLATEID!,
+        formRef.current!,
+        process.env.NEXT_PUBLIC_ENV_LOCAL_PUBLICKEY!
+      );
+
+      alert("Message successfully sent!");
+      setForm({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Failed to send message:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -53,18 +69,14 @@ const ContactPage = () => {
         >
           <FaWhatsapp />
         </Link>
-
-        
       </div>
 
-      
       <form
+        ref={formRef}
         onSubmit={handleSubmit}
         className="bg-gray-800 flex flex-col gap-3 p-4 rounded-lg w-full max-w-md shadow-lg"
       >
-        <h2 className="text-2xl font-semibold text-center">
-          Leave a Message
-        </h2>
+        <h2 className="text-2xl font-semibold text-center">Leave a Message</h2>
 
         <div className="">
           <label htmlFor="fullName" className="block text-sm font-medium mb-1">
@@ -72,9 +84,9 @@ const ContactPage = () => {
           </label>
           <input
             type="text"
-            id="fullName"
-            name="fullName"
-            value={form.fullName}
+            id="name"
+            name="name"
+            value={form.name}
             onChange={handleChange}
             className="w-full p-1 bg-[#151615] border border-gray-600 rounded focus:border-[#ffcc00] outline-none"
             required
@@ -113,9 +125,10 @@ const ContactPage = () => {
 
         <button
           type="submit"
+          disabled={loading}
           className="w-full bg-[#ffcc00] text-[#151615] font-semibold py-2 rounded hover:bg-[#e6b800] transition-colors"
         >
-          Send Message
+          {loading ? "Sending..." : "Send Message"}
         </button>
       </form>
     </section>
