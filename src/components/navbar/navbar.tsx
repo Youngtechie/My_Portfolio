@@ -14,7 +14,7 @@ import {
   faPhoneAlt,
   faCode,
 } from "@fortawesome/free-solid-svg-icons";
-import Image from 'next/image'
+import Image from "next/image";
 
 export function Navbar() {
   const currentPath = usePathname();
@@ -88,7 +88,7 @@ export function Navbar() {
         </ul>
 
         <div className="absolute bottom-20 flex w-full items-center justify-center">
-          <Link href="#">
+          <Link href={pdfUrl} target="_blank">
             <FontAwesomeIcon icon={faCloudDownload} color="white" size="3x" />
           </Link>
         </div>
