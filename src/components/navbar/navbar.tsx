@@ -14,18 +14,18 @@ import {
   faPhoneAlt,
   faCode,
 } from "@fortawesome/free-solid-svg-icons";
+import Image from 'next/image'
 
 export function Navbar() {
   const currentPath = usePathname();
   const [navbar, setNavbar] = useState(false);
-  const [pdfUrl, setPdfUrl] = useState('');
+  const [pdfUrl, setPdfUrl] = useState("");
 
   const toggleNavbar = () => {
     setNavbar(!navbar);
   };
 
   useEffect(() => {
-
     const fileRef = ref(storage, "/AbdulRahmon_Olaegbe_Resume.pdf");
 
     getDownloadURL(fileRef)
@@ -95,6 +95,13 @@ export function Navbar() {
       </nav>
       <nav className="lg:flex h-full hidden nav_B">
         <section className="interactive-sidebar lg:h-[550px] flex flex-col justify-center items-center">
+          <Image
+            src={"/logo.png"}
+            alt=""
+            width={50}
+            height={50}
+            className="absolute top-5"
+          />
           <ul>
             <Link
               href={"/"}

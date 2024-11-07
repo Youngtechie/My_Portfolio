@@ -111,6 +111,17 @@
   border-bottom-right-radius: 0;
 }
 
+.interactive-sidebar ul a:not(.interactive-sidebar a.active):hover svg path {
+  fill: #FFD700;
+}
+
+.interactive-sidebar ul a:hover {
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .active .icon-container {
   display: flex;
   align-items: center;

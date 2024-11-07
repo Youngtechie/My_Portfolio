@@ -13,7 +13,7 @@ export function Header({ onToggleNavbar, open }: HeaderProps) {
   return (
     <div>
       <div className="lg:hidden flex L_head L_head_S px-2">
-        <Image src={"/next.svg"} alt="" width={100} height={50} className="invert" />
+        <Image src={"/logo.png"} alt="" width={50} height={50} className="" />
         <FontAwesomeIcon
           icon={!open? faBars : faTimes}
           color="white"
