@@ -20,8 +20,8 @@ const MyProjects = () => {
   };
 
   return (
-    <section className="text-white lg:bg-[#151615] flex flex-col w-full items-center justify-around pt-[90px] lg:pt-5 lg:mt-0 p-3 lg:p-6 lg:h-full lg:w-[450px] h-[100vh] overflow-scroll lg:overflow-hidden">
-      <h1 className="text-3xl font-bold text-center mb-4">My Projects</h1>
+    <section className="text-white lg:bg-[#151615] flex flex-col w-full items-center space-y-6 justify-around pt-[90px] lg:pt-5 lg:mt-0 p-3 lg:p-6 lg:h-full lg:w-[450px] h-[100vh] overflow-scroll lg:overflow-hidden">
+      <h1 className="text-3xl font-bold text-center">My Projects</h1>
 
       <div className="projects-container flex flex-col items-center space-y-6">
         <AnimatePresence mode="wait">

@@ -10,12 +10,11 @@
   background-size: cover;
   z-index: 3200;
   transition: 0.3s ease;
-  padding-top: 1rem;
   overflow: hidden;
 }
 
 #left-side-bar {
-  height: calc(100vh - 65px);
+  height: calc(100vh - 75px);
 }
 
 .interactive-sidebar {
