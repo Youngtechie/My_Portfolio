@@ -63,7 +63,7 @@ const AboutPage = () => {
         >
           Tech Stack
         </motion.h2>
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex flex-wrap justify-center gap-8 mb-5">
           {[
             { Icon: FaHtml5, name: "HTML" },
             { Icon: FaCss3Alt, name: "CSS" },
