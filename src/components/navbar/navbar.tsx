@@ -144,7 +144,7 @@ export function Navbar() {
               </div>
             </Link>
           </ul>
-          <div className="absolute bottom-10 flex w-full items-center justify-center">
+          <div className="downLoad absolute bottom-10 flex w-full items-center justify-center">
             <Link href={pdfUrl} target="_blank">
               <FontAwesomeIcon icon={faCloudDownload} color="white" size="2x" />
             </Link>

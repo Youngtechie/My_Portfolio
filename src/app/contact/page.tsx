@@ -41,7 +41,7 @@ const ContactPage = () => {
   };
 
   return (
-    <section className="text-white bg-[#151615] w-full gap-3 lg:gap-5 p-3 lg:p-6 h-[calc(100vh-50px)] lg:h-full lg:w-[450px] flex flex-col items-center mt-[65px] lg:mt-0">
+    <section className="text-white bg-[#151615] w-full gap-3 lg:gap-5 p-3 lg:p-6 h-[100vh] lg:h-full lg:w-[450px] flex flex-col items-center pt-[70px] lg:pt-5 lg:mt-0">
       <h1 className="text-3xl font-bold">Get in Touch</h1>
 
       <div className="flex space-x-6">

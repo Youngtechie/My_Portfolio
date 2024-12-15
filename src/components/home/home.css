@@ -6,7 +6,6 @@
   animation: pulseLine 2s infinite;
 }
 .min_Header {
-  margin-top: 70px;
   height: calc(100vh - 70px);
 }
 

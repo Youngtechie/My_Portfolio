@@ -111,7 +111,7 @@
   border-bottom-right-radius: 0;
 }
 
-.interactive-sidebar ul a:not(.interactive-sidebar a.active):hover svg path {
+.interactive-sidebar ul a:not(.interactive-sidebar a.active):hover svg path, .downLoad:hover svg path {
   fill: #FFD700;
 }
 

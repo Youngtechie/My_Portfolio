@@ -28,8 +28,8 @@ const projects = [
   },
   {
     "id": "2",
-    "title": "My 3D Portfolio",
-    "description": "My 3D Portfolio is a visually stunning and interactive personal portfolio website showcasing projects in a dynamic 3D environment.",
+    "title": "3D Portfolio",
+    "description": "3D Portfolio is a visually stunning and interactive personal portfolio website showcasing projects in a dynamic 3D environment.",
     "image": "/3dport.png",
     "link": "https://oa-3dportfolio.netlify.app",
     "techStack": [

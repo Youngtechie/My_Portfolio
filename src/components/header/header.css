@@ -1,10 +1,36 @@
-.L_head {
+/* Header Styling */
+.header-container {
   position: fixed;
-  flex-direction: row;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-content {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  top: 0;
-  background-color: black;
-  z-index: 100;
+  max-width: 1200px; /* Optional, for centering and better alignment on wider screens */
+}
+
+.logo {
+  object-fit: contain;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.menu-toggle:hover {
+  opacity: 0.8;
 }

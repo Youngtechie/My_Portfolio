@@ -21,7 +21,7 @@ export default function HomeSide({view}: HomeSlideProps) {
   }, []);
 
   return (
-    <div className={`${view ? 'flex bg-none min_Header w-[100vw]': 'hidden'} lg:flex flex-col items-center  lg:w-[300px] lg:h-[600px] bg-[url('/bg.png')] bg-cover bg-center bg-no-repeat text-[#fff] shadow-lg shadow-[#1f1e1e] z-50 relative lg:py-32 lg:gap-20 gap-24`}>
+    <div className={`${view ? 'flex bg-none min_Header w-[100vw]': 'hidden'} lg:flex flex-col items-center  lg:w-[300px] lg:h-[600px] bg-[url('/bg.png')] bg-cover bg-center bg-no-repeat text-[#fff] lg:shadow-lg lg:shadow-[#1f1e1e] z-50 relative lg:py-32 lg:gap-20 justify-center gap-20`}>
       <div className={`${!view? 'absolute inset-0 bg-black opacity-50 z-10 rounded-xl': ''} `}></div>
 
       <div className="flex gap-5 z-20 relative">
@@ -58,7 +58,7 @@ export default function HomeSide({view}: HomeSlideProps) {
 
       {/* Scrolling Text Below */}
       <h3
-        className="font-bold text-2xl justify-self-end bottom-12 absolute z-50"
+        className="font-bold text-2xl justify-self-end bottom-12 z-50"
         style={{ minHeight: "2em" }}
       >
         <Typewriter
