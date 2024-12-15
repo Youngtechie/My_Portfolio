@@ -2,7 +2,7 @@
 .interactive-sidebar {
   position: fixed;
   bottom: 0;
-  left: 0;
+  right: 0;
   width: 200px;
   background-image: url('/general_bg.jpg');
   background-position: center;
@@ -10,12 +10,12 @@
   background-size: cover;
   z-index: 3200;
   transition: 0.3s ease;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
   overflow: hidden;
 }
 
 #left-side-bar {
-  height: calc(100vh - 50px);
+  height: calc(100vh - 65px);
 }
 
 .interactive-sidebar {

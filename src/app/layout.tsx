@@ -88,9 +88,9 @@ export default function RootLayout({
       <body
         className={`${playfairDisplay.variable} ${inter.variable} antialiased bg-[url('/general_bg.jpg')] w-full bg-cover bg-center bg-no-repeat`}
       >
-        <main className="lg:flex lg:items-center lg:justify-center lg:w-[100vw] lg:h-[100vh]">
+        <main className="lg:flex lg:items-center lg:justify-center w-[100vw] h-[100vh] ">
           <Navbar />
-          <div className="lg:h-[550px] lg:pt-0 pt-[50px] flex flex-col lg:flex-row items-center">
+          <div className="lg:h-[550px] lg:pt-0 flex flex-col lg:flex-row items-center ">
             <HomeSide view={false} />
             {children}
           </div>

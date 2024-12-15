@@ -20,7 +20,7 @@ const MyProjects = () => {
   };
 
   return (
-    <section className="text-white bg-[#151615] flex flex-col w-full items-center justify-around p-3 lg:p-6 h-[calc(100vh-50px)] lg:h-full lg:w-[450px]">
+    <section className="text-white lg:bg-[#151615] flex flex-col w-full items-center justify-around mt-[65px] lg:mt-0 p-3 lg:p-6 lg:h-full lg:w-[450px] h-[calc(100vh - 50px)]">
       <h1 className="text-3xl font-bold text-center mb-4">My Projects</h1>
 
       <div className="projects-container flex flex-col items-center space-y-6">
@@ -28,21 +28,21 @@ const MyProjects = () => {
           <Link target="_blank" href={projects[completedIndex].link}>
             <motion.div
               key={projects[completedIndex].id}
-              className="project-card w-full h-[350px] bg-gray-800 flex flex-col items-center justify-between rounded-lg shadow-lg space-y-2"
+              className="project-card w-full h-[400px] lg:h-[350px] bg-gray-800 flex flex-col items-center justify-between rounded-lg shadow-lg space-y-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
               whileHover={{ scale: 1.05 }}
             >
-              <div className="relative w-auto max-w-[300px] h-auto mx-auto">
+              <div className="relative w-full md:max-w-[400px] lg:max-w-[300px] h-auto mx-auto">
                 <Image
                   src={projects[completedIndex].image}
                   alt={projects[completedIndex].title}
                   className="rounded-md"
                   layout="responsive"
-                  width={16} // 16:9 aspect ratio for example
-                  height={9}
+                  width={12} // 16:9 aspect ratio for example
+                  height={5}
                   objectFit="contain" // or "cover" depending on your preference
                 />
               </div>

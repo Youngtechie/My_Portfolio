@@ -6,7 +6,8 @@
   animation: pulseLine 2s infinite;
 }
 .min_Header {
-  height: calc(100vh - 50px);
+  margin-top: 70px;
+  height: calc(100vh - 70px);
 }
 
 @keyframes pulseLine {
