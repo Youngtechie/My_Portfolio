@@ -1,6 +1,6 @@
 #left-side-bar,
 .interactive-sidebar {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   right: 0;
   width: 200px;
@@ -14,7 +14,7 @@
 }
 
 #left-side-bar {
-  height: calc(100vh - 75px);
+  height: calc(100vh - 70px);
 }
 
 .interactive-sidebar {
