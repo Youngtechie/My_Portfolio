@@ -12,7 +12,7 @@ import {
 
 const AboutPage = () => {
   return (
-    <div className="p-5 flex flex-col gap-10 bg-[#151615] w-full lg:w-[450px] h-[100vh] lg:h-full text-center lg:text-left overflow-scroll overflow-x-hidden pt-[90px] pb-10 lg:pt-5">
+    <div className="p-5 flex flex-col gap-10 bg-[#151615] w-full lg:w-[450px] h-[100vh] lg:h-full text-center lg:text-left overflow-scroll pt-[90px] pb-30 lg:pt-5">
       <div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
