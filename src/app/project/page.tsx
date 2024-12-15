@@ -1,58 +1,22 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiReact,
-  SiVuedotjs,
-  SiNextdotjs,
-  SiFirebase,
-} from "react-icons/si";
 import "./page.css";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-
-const completedProjects = [
-  {
-    id: 1,
-    title: "Project 1",
-    image: "/general_bg.jpg",
-    description:
-      "A detailed description of Project 1. dnkjfkjfkhjfkfkj fjkhfkjf fjkf fjkf fjkf f,jkjf f,jf ,dmkf fnkf fmfm ",
-    techStack: [
-      <SiHtml5 key="html5" size={"30"} />,
-      <SiCss3 key="css3" size={"30"} />,
-      <SiJavascript key="javascript" size={"30"} />,
-    ],
-  },
-  {
-    id: 2,
-    title: "Project 2",
-    image: "/general_bg.jpg",
-    description: "A detailed description of Project 2",
-    techStack: [
-      <SiReact key="react" size={"30"} />,
-      <SiVuedotjs key="vue" size={"30"} />,
-      <SiNextdotjs key="nextjs" size={"30"} />,
-      <SiFirebase key="firebase" size={"30"} />,
-    ],
-  },
-];
+import projects from "../../constants";
+import Link from "next/link";
 
 const MyProjects = () => {
   const [completedIndex, setCompletedIndex] = useState(0);
 
   const handleNextCompleted = () => {
-    setCompletedIndex((prev) => (prev + 1) % completedProjects.length);
+    setCompletedIndex((prev) => (prev + 1) % projects.length);
   };
 
   const handlePrevCompleted = () => {
-    setCompletedIndex((prev) =>
-      prev === 0 ? completedProjects.length - 1 : prev - 1
-    );
+    setCompletedIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
   };
 
   return (
@@ -61,35 +25,41 @@ const MyProjects = () => {
 
       <div className="projects-container flex flex-col items-center space-y-6">
         <AnimatePresence mode="wait">
-          <motion.div
-            key={completedProjects[completedIndex].id}
-            className="project-card w-full h-[350px] bg-gray-800 flex flex-col items-center justify-between rounded-lg p-6 shadow-lg space-y-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Image
-              src={completedProjects[completedIndex].image}
-              alt={completedProjects[completedIndex].title}
-              className="w-full max-w-[300px]  rounded-md"
-              height={50}
-              width={50}
-            />
-            <h3 className="text-xl font-semibold text-white text-center">
-              {completedProjects[completedIndex].title}
-            </h3>
-            <p className="text-left text-sm text-gray-300">
-              {completedProjects[completedIndex].description}
-            </p>
-            <div className="flex items-center justify-center space-x-4 text-2xl text-yellow-400">
-              {completedProjects[completedIndex].techStack.map(
-                (Icon, index) => (
+          <Link target="_blank" href={projects[completedIndex].link}>
+            <motion.div
+              key={projects[completedIndex].id}
+              className="project-card w-full h-[350px] bg-gray-800 flex flex-col items-center justify-between rounded-lg shadow-lg space-y-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="relative w-auto max-w-[300px] h-auto mx-auto">
+                <Image
+                  src={projects[completedIndex].image}
+                  alt={projects[completedIndex].title}
+                  className="rounded-md"
+                  layout="responsive"
+                  width={16} // 16:9 aspect ratio for example
+                  height={9}
+                  objectFit="contain" // or "cover" depending on your preference
+                />
+              </div>
+
+              <h3 className="text-xl font-semibold text-white text-center">
+                {projects[completedIndex].title}
+              </h3>
+              <p className="text-left text-sm text-gray-300">
+                {projects[completedIndex].description}
+              </p>
+              <div className="flex items-center justify-center space-x-4 text-2xl text-yellow-400">
+                {projects[completedIndex].techStack.map((Icon, index) => (
                   <span key={index}>{Icon}</span>
-                )
-              )}
-            </div>
-          </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </Link>
         </AnimatePresence>
 
         <div className="slider-controls flex space-x-6">

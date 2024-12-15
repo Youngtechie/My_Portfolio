@@ -1,7 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs } from "react-icons/fa";
-import { SiNextdotjs, SiFirebase } from "react-icons/si";
+import {
+  SiTypescript,
+  SiThreedotjs,
+  SiNextdotjs,
+  SiFirebase,
+  SiTailwindcss,
+  SiWagmi,
+} from "react-icons/si";
 
 const AboutPage = () => {
   return (
@@ -65,6 +72,10 @@ const AboutPage = () => {
             { Icon: FaVuejs, name: "Vue" },
             { Icon: SiNextdotjs, name: "Next.js" },
             { Icon: SiFirebase, name: "Firebase" },
+            { Icon: SiTailwindcss, name: "TailwindCSS" },
+            { Icon: SiThreedotjs, name: "Three.js" },
+            { Icon: SiTypescript, name: "Typescript" },
+            { Icon: SiWagmi, name: "Wagmi" },
           ].map((tech, index) => (
             <motion.div
               key={tech.name}
@@ -72,7 +83,8 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center cursor-pointer"
+              whileHover={{ scale: 1.05 }}
             >
               <tech.Icon className="text-4xl text-indigo-500 mb-2" />
               <p>{tech.name}</p>

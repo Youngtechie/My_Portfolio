@@ -21,8 +21,61 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Explore my work and skills.",
+  title: "Olaegbe Abdul-Rahmon | Developer Portfolio",
+  description:
+    "Discover the portfolio of Olaegbe Abdul-Rahmon, a creative web developer specializing in React.js, TypeScript, Three.js, and cutting-edge web technologies. Explore my projects and skills to see how I bring ideas to life!",
+  keywords: [
+    "Olaegbe Abdul-Rahmon",
+    "Young techie",
+    "young__techie",
+    "Developer Portfolio",
+    "React Developer",
+    "TypeScript Developer",
+    "Three.js Developer",
+    "Frontend Developer",
+    "3D Web Developer",
+    "Web Development Portfolio",
+  ],
+  authors: [
+    {
+      name: "Olaegbe Abdul-Rahmon",
+      url: "https://olaegbe-portfolio.vercel.app/",
+    },
+  ],
+  viewport: "width=device-width, initial-scale=1.0",
+  robots: "index, follow",
+  openGraph: {
+    title: "Olaegbe Abdul-Rahmon | Developer Portfolio",
+    description:
+      "Discover the portfolio of Olaegbe Abdul-Rahmon, a creative web developer specializing in React.js, TypeScript, Three.js, and cutting-edge web technologies.",
+    url: "https://olaegbe-portfolio.vercel.app/",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Olaegbe Abdul-Rahmon's Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Olaegbe Abdul-Rahmon | Developer Portfolio",
+    description:
+      "Discover the portfolio of Olaegbe Abdul-Rahmon, a creative web developer specializing in React.js, TypeScript, Three.js, and cutting-edge web technologies.",
+    images: [
+      {
+        url: "/og-image.png",
+        alt: "Olaegbe Abdul-Rahmon's Portfolio",
+      },
+    ],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
