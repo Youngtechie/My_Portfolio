@@ -14,7 +14,8 @@
 }
 
 #left-side-bar {
-  height: calc(100vh - 70px);
+  padding-top: 90px;
+  height: 100vh;
 }
 
 .interactive-sidebar {
