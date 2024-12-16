@@ -36,7 +36,7 @@ const AboutPage = () => {
           }}
           className="flex flex-col lg:flex-row items-center"
         >
-          <motion.div className="space-y-2 text-md max-w-md leading-relaxed">
+          <motion.div className="space-y-2 max-w-md leading-relaxed">
             <motion.p>
               Hi there! I&#39;m a Front-End Developer driven by a passion for
               creating engaging, responsive web experiences. Proficient in HTML,
