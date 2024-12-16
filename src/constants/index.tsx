@@ -21,8 +21,9 @@ const projects = [
     link: "https://votex-platform.vercel.app/",
     techStack: [
       <SiNextdotjs key="nextjs" size={"30"} />,
-      <SiFirebase key="firebase" size={"30"} />,
+      <SiTypescript key="typescript" size={"30"} />,
       <SiTailwindcss key="tailwindcss" size={"30"} />,
+      <SiFirebase key="firebase" size={"30"} />,
       <SiWagmi key="wagmi" size={"30"} />,
     ],
   },
