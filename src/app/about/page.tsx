@@ -12,7 +12,7 @@ import {
 
 const AboutPage = () => {
   return (
-    <div className="text-white lg:bg-[#151615] flex flex-col w-full items-center space-y-6 pt-[90px] lg:mt-0 p-3 lg:p-6 min-h-screen lg:h-full  lg:w-[450px] overflow-scroll">
+    <div className="text-white lg:bg-[#151615] flex flex-col w-full items-center space-y-6 pt-[90px] lg:mt-0 p-3 lg:p-6 pb-[100px] min-h-screen lg:h-full overflow-y-auto">
       <div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -36,7 +36,7 @@ const AboutPage = () => {
           }}
           className="flex flex-col lg:flex-row items-center"
         >
-          <motion.div className="space-y-2 text-md  max-w-md leading-relaxed">
+          <motion.div className="space-y-2 text-md max-w-md leading-relaxed">
             <motion.p>
               Hi there! I&#39;m a Front-End Developer driven by a passion for
               creating engaging, responsive web experiences. Proficient in HTML,
@@ -58,7 +58,7 @@ const AboutPage = () => {
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="text-3xl font-semibold mb-4"
         >
           Tech Stack
@@ -81,10 +81,9 @@ const AboutPage = () => {
               key={tech.name}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: index * 0.1 }}
               className="flex flex-col items-center cursor-pointer"
-              whileHover={{ scale: 1.05 }}
             >
               <tech.Icon className="text-4xl text-indigo-500 mb-2" />
               <p>{tech.name}</p>
