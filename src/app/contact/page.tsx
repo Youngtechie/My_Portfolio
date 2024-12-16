@@ -24,10 +24,10 @@ const ContactPage = () => {
 
     try {
       await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_ENV_LOCAL_SERVICEID!,
-        process.env.NEXT_PUBLIC_ENV_LOCAL_TEMPLATEID!,
+        "service_ppfm9gx",
+        "contact_form",
         formRef.current!,
-        process.env.NEXT_PUBLIC_ENV_LOCAL_PUBLICKEY!
+        "FWrgeHDJIQuot0T05"
       );
 
       alert("Message successfully sent!");
