@@ -21,14 +21,14 @@ const MyProjects = () => {
 
   return (
     <section className="text-white lg:bg-[#151615] flex flex-col w-full items-center space-y-6 pt-[90px] lg:mt-0 p-3 lg:p-6 lg:h-full lg:w-[450px] h-[100vh] overflow-scroll lg:overflow-hidden">
-      <h1 className="text-3xl font-bold text-center">My Projects</h1>
+      <h1 className="text-2xl font-bold text-center">My Projects</h1>
 
       <div className="projects-container flex flex-col items-center space-y-6">
         <AnimatePresence mode="wait">
           <Link target="_blank" href={projects[completedIndex].link}>
             <motion.div
               key={projects[completedIndex].id}
-              className="project-card w-full h-[400px] lg:h-[350px] bg-gray-800 flex flex-col items-center justify-between rounded-lg shadow-lg space-y-2"
+              className="project-card w-full h-[400px] lg:h-[380px] bg-gray-800 flex flex-col items-center justify-between rounded-lg shadow-lg space-y-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -47,7 +47,7 @@ const MyProjects = () => {
                 />
               </div>
 
-              <h3 className="text-xl font-semibold text-white text-center">
+              <h3 className="text-lg font-semibold text-white text-center">
                 {projects[completedIndex].title}
               </h3>
               <p className="text-left text-sm text-gray-300">
