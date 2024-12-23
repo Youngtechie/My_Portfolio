@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Orbitron, Questrial, } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar/navbar";
 import HomeSide from "@/components/home/home";
@@ -8,17 +8,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 
 config.autoAddCss = false;
 
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "700"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "700"],
-});
+const headingFont = Orbitron({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-heading" });
+const bodyFont = Questrial({ subsets: ["latin"], weight: ["400"], variable: "--font-body" });
 
 export const metadata: Metadata = {
   title: "Olaegbe Abdul-Rahmon | Developer Portfolio",
@@ -86,7 +77,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfairDisplay.variable} ${inter.variable} antialiased bg-[url('/general_bg.jpg')] w-full h-full bg-cover bg-center bg-no-repeat`}
+        className={`${headingFont.variable} ${bodyFont.variable} antialiased bg-[url('/general_bg.jpg')] w-full h-full bg-cover bg-center bg-no-repeat`}
       >
         <main className="lg:flex lg:items-center lg:justify-center w-full h-full">
           <Navbar />
