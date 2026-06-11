@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Orbitron, Questrial, } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Orbitron, Questrial } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar/navbar";
 import HomeSide from "@/components/home/home";
@@ -8,8 +8,21 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 
 config.autoAddCss = false;
 
-const headingFont = Orbitron({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-heading" });
-const bodyFont = Questrial({ subsets: ["latin"], weight: ["400"], variable: "--font-body" });
+const headingFont = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-heading",
+});
+const bodyFont = Questrial({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-body",
+});
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Olaegbe Abdul-Rahmon | Developer Portfolio",
@@ -17,26 +30,39 @@ export const metadata: Metadata = {
     "Discover the portfolio of Olaegbe Abdul-Rahmon, a creative web developer specializing in React.js, TypeScript, Three.js, and cutting-edge web technologies. Explore my projects and skills to see how I bring ideas to life!",
   keywords: [
     "Olaegbe Abdul-Rahmon",
-    "Young techie",
-    "young__techie",
+    "Abdul-Rahmon O.",
+    "Olaegbe Abdul-Rahmon Pelumi",
+    "Nobel Sentinel",
     "Developer Portfolio",
     "React Developer",
+    "Cybersecurity",
+    "Ethical Hacker",
     "TypeScript Developer",
     "Three.js Developer",
-    "Frontend Developer",
+    "FullStack Developer",
+    "Certified Ethical Hacker",
+    "Certified Network Defender",
+    "Certified Front-End Developer",
+    "Certified FullStack Developer",
+    "WEB3 Developer",
     "3D Web Developer",
     "Web Development Portfolio",
+    "Creative Developer",
+    "Web Technologies",
+    "Interactive Web Experiences",
+    "Olaegbe Portfolio",
+    "Abdul-Rahmon Portfolio",
+    "Nobel Sentinel Portfolio",
   ],
   authors: [
     {
-      name: "Olaegbe Abdul-Rahmon",
+      name: "Olaegbe Abdul-Rahmon P.",
       url: "https://olaegbe-portfolio.vercel.app/",
     },
   ],
-  viewport: "width=device-width, initial-scale=1.0",
   robots: "index, follow",
   openGraph: {
-    title: "Olaegbe Abdul-Rahmon | Developer Portfolio",
+    title: "Abdul-Rahmon O. | Developer Portfolio",
     description:
       "Discover the portfolio of Olaegbe Abdul-Rahmon, a creative web developer specializing in React.js, TypeScript, Three.js, and cutting-edge web technologies.",
     url: "https://olaegbe-portfolio.vercel.app/",
@@ -52,7 +78,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Olaegbe Abdul-Rahmon | Developer Portfolio",
+    title: "Abdul-Rahmon O. | Developer Portfolio",
     description:
       "Discover the portfolio of Olaegbe Abdul-Rahmon, a creative web developer specializing in React.js, TypeScript, Three.js, and cutting-edge web technologies.",
     images: [
@@ -63,17 +89,14 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-32x32.png",
-    apple: "/apple-touch-icon.png",
+  icon: [{ url: "/logo.png", type: "image/png" }],
+  apple: "/apple-touch-icon.png",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body
