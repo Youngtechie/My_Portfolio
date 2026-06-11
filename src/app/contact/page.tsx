@@ -37,11 +37,11 @@ const ContactPage = () => {
   };
 
   return (
-    <section className="bg-[#151615] text-white flex items-center justify-center pt-[70px] lg:pt-0 lg:h-[600px] lg:overflow-hidden overflow-scroll">
-      <div className="w-full max-w-[460px] bg-[#1a1b1a] border border-[#2e2f2e] rounded-2xl lg:rounded-none h-full">
+    <section className="bg-[#151615] text-white flex items-center justify-center pt-[150px] lg:pt-0 lg:h-[600px] h-full lg:overflow-hidden overflow-scroll">
+      <div className="w-full max-w-[460px] bg-[#1a1b1a] border border-[#2e2f2e] lg:h-full">
 
         {/* Header strip with gold left accent */}
-        <div className="border-l-[3px] border-[#ffcc00] rounded-2xl px-7 pt-7">
+        <div className="border-l-[3px] border-[#ffcc00] lg:rounded-none px-7 pt-7">
           <h1 className="text-2xl font-semibold tracking-tight">Get in Touch</h1>
           <p className="text-sm text-[#888] mt-1">I&#39;ll get back to you as soon as possible.</p>
 
@@ -72,7 +72,7 @@ const ContactPage = () => {
             { id: "email", label: "Email", type: "email", placeholder: "you@example.com" },
           ].map(({ id, label, type, placeholder }) => (
             <div key={id}>
-              <label htmlFor={id} className="block text-[11px] font-medium uppercase tracking-widest text-[#888] mb-1.5">
+              <label htmlFor={id} className="block text-sm font-bold uppercase tracking-widest text-[#888] mb-1.5">
                 {label}
               </label>
               <input
@@ -89,7 +89,7 @@ const ContactPage = () => {
           ))}
 
           <div>
-            <label htmlFor="message" className="block text-[11px] font-medium uppercase tracking-widest text-[#888] mb-1.5">
+            <label htmlFor="message" className="block text-sm font-bold uppercase tracking-widest text-[#888] mb-1.5">
               Message
             </label>
             <textarea
