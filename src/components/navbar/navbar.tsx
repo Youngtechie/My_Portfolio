@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./navbar.css";
@@ -16,141 +16,145 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
+const navLinks = [
+  { href: "/", icon: faHome, label: "Home" },
+  { href: "/about", icon: faUser, label: "About" },
+  { href: "/project", icon: faCode, label: "Projects" },
+  { href: "/contact", icon: faPhoneAlt, label: "Contact" },
+];
+
 export function Navbar() {
   const currentPath = usePathname();
   const [navbar, setNavbar] = useState(false);
   const [pdfUrl, setPdfUrl] = useState("");
+  const drawerRef = useRef<HTMLElement>(null);
 
-  const toggleNavbar = () => {
-    setNavbar(!navbar);
-  };
+  const toggleNavbar = () => setNavbar((v) => !v);
+  const closeNavbar = () => setNavbar(false);
 
+  // Close on outside click
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (
+        navbar &&
+        drawerRef.current &&
+        !drawerRef.current.contains(e.target as Node)
+      ) {
+        closeNavbar();
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [navbar]);
+
+  // Fetch resume URL
   useEffect(() => {
     const fileRef = ref(storage, "/AbdulRahmon_Olaegbe_Resume.pdf");
-
     getDownloadURL(fileRef)
       .then((url) => setPdfUrl(url))
-      .catch((error) => console.error("Error fetching download URL:", error));
+      .catch((err) => console.error("Error fetching PDF URL:", err));
   }, []);
 
   return (
     <div>
       <Header onToggleNavbar={toggleNavbar} open={navbar} />
-      <nav
-        id="left-side-bar"
-        className={`${navbar ? "flex" : "hidden"} lg:hidden nav_S`}
-      >
-        <ul className="left-side-menu top">
-          <li>
-            <Link
-              href={"/"}
-              className={`text anchor h-[48px] flex items-center gap-2 ${
-                currentPath === `/` ? "active" : ""
-              }`}
-            >
-              <FontAwesomeIcon icon={faHome} color="white" />
-              <span>Home</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={"/about"}
-              className={`text anchor h-[48px] flex items-center gap-2  ${
-                currentPath === `/about` ? "active" : ""
-              }`}
-            >
-              <FontAwesomeIcon icon={faUser} color="white" />
-              <span>About</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={"/project"}
-              className={`text anchor h-[48px] flex items-center gap-2  ${
-                currentPath === `/project` ? "active" : ""
-              }`}
-            >
-              <FontAwesomeIcon icon={faCode} color="white" />
-              <span>Project</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={"/contact"}
-              className={`text anchor h-[48px] flex items-center gap-2  ${
-                currentPath === `/contact` ? "active" : ""
-              }`}
-            >
-              <FontAwesomeIcon icon={faPhoneAlt} color="white" />
-              <span>Contact</span>
-            </Link>
-          </li>
-        </ul>
 
-        <div className="absolute bottom-20 flex w-full items-center justify-center">
-          <Link href={pdfUrl} target="_blank">
-            <FontAwesomeIcon icon={faCloudDownload} color="white" size="3x" />
-          </Link>
+      {/* Mobile backdrop */}
+      {navbar && (
+        <div
+          className="nav-backdrop"
+          onClick={closeNavbar}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile drawer */}
+      <nav
+        ref={drawerRef}
+        id="left-side-bar"
+        className={`nav-drawer ${navbar ? "nav-drawer--open" : ""}`}
+        aria-label="Mobile navigation"
+      >
+        <div className="nav-drawer__inner">
+          <ul className="nav-drawer__list">
+            {navLinks.map(({ href, icon, label }) => {
+              const isActive = currentPath === href;
+              return (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    onClick={closeNavbar}
+                    className={`nav-drawer__link ${isActive ? "nav-drawer__link--active" : ""}`}
+                  >
+                    <span className="nav-drawer__icon">
+                      <FontAwesomeIcon icon={icon} />
+                    </span>
+                    <span className="nav-drawer__label">{label}</span>
+                    {isActive && <span className="nav-drawer__dot" aria-hidden="true" />}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          {pdfUrl && (
+            <Link
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-drawer__resume"
+            >
+              <FontAwesomeIcon icon={faCloudDownload} />
+              <span>Resume</span>
+            </Link>
+          )}
         </div>
       </nav>
-      <nav className="lg:flex h-full hidden nav_B">
-        <section className="interactive-sidebar lg:h-[550px] flex flex-col justify-center items-center">
+
+      {/* Desktop sidebar rail */}
+      <nav className="nav-rail" aria-label="Desktop navigation">
+        <div className="nav-rail__inner">
           <Image
-            src={"/logo.png"}
-            alt=""
-            width={50}
-            height={50}
-            className="absolute top-5"
+            src="/logo.png"
+            alt="Logo"
+            width={36}
+            height={36}
+            className="nav-rail__logo"
             priority
           />
-          <ul>
-            <Link
-              href={"/"}
-              className={`text anchor h-[48px] ${
-                currentPath === `/` ? "active" : ""
-              }`}
-            >
-              <div className="icon-container">
-                <FontAwesomeIcon icon={faHome} color="white" />
-              </div>
-            </Link>
-            <Link
-              href={"/about"}
-              className={`text anchor h-[48px] ${
-                currentPath === `/about` ? "active" : ""
-              }`}
-            >
-              <div className="icon-container">
-                <FontAwesomeIcon icon={faUser} color="white" />
-              </div>
-            </Link>
-            <Link
-              href={"/project"}
-              className={`text anchor h-[48px] ${
-                currentPath === `/project` ? "active" : ""
-              }`}
-            >
-              <div className="icon-container">
-                <FontAwesomeIcon icon={faCode} color="white" />
-              </div>
-            </Link>
-            <Link
-              href={"/contact"}
-              className={`text anchor h-[48px] ${
-                currentPath === `/contact` ? "active" : ""
-              }`}
-            >
-              <div className="icon-container">
-                <FontAwesomeIcon icon={faPhoneAlt} color="white" />
-              </div>
-            </Link>
+
+          <ul className="nav-rail__list">
+            {navLinks.map(({ href, icon, label }) => {
+              const isActive = currentPath === href;
+              return (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className={`nav-rail__link ${isActive ? "nav-rail__link--active" : ""}`}
+                    aria-label={label}
+                    title={label}
+                  >
+                    <FontAwesomeIcon icon={icon} />
+                    {isActive && <span className="nav-rail__pip" aria-hidden="true" />}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
-          <div className="downLoad absolute bottom-10 flex w-full items-center justify-center">
-            <Link href={pdfUrl} target="_blank">
-              <FontAwesomeIcon icon={faCloudDownload} color="white" size="2x" />
+
+          {pdfUrl && (
+            <Link
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-rail__resume"
+              aria-label="Download resume"
+              title="Download resume"
+            >
+              <FontAwesomeIcon icon={faCloudDownload} />
             </Link>
-          </div>
-        </section>
+          )}
+        </div>
       </nav>
     </div>
   );
