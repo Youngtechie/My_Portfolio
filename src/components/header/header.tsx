@@ -1,4 +1,5 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
+import { forwardRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./header.css";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -8,9 +9,11 @@ interface HeaderProps {
   open: boolean;
 }
 
-export function Header({ onToggleNavbar, open }: HeaderProps) {
+export const Header = forwardRef<HTMLElement, HeaderProps>(
+  ({ onToggleNavbar, open }, ref) => {
+
   return (
-    <header className="header-container px-4 py-2 flex lg:hidden">
+    <header ref={ref} className="header-container px-4 py-2 flex lg:hidden">
       <div className="header-content">
         <Image
           src="/logo.png"
@@ -30,4 +33,7 @@ export function Header({ onToggleNavbar, open }: HeaderProps) {
       </div>
     </header>
   );
-}
+  }
+);
+
+Header.displayName = "Header";

@@ -29,6 +29,7 @@
   align-items: center;
   justify-content: center;
   padding: 8px;
+  z-index: 4100;
 }
 
 .menu-toggle:hover {

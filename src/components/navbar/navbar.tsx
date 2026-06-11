@@ -28,6 +28,7 @@ export function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const [pdfUrl, setPdfUrl] = useState("");
   const drawerRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
   const toggleNavbar = () => setNavbar((v) => !v);
   const closeNavbar = () => setNavbar(false);
@@ -37,8 +38,10 @@ export function Navbar() {
     const handleClick = (e: MouseEvent) => {
       if (
         navbar &&
-        drawerRef.current &&
-        !drawerRef.current.contains(e.target as Node)
+      drawerRef.current &&
+      !drawerRef.current.contains(e.target as Node) &&
+      headerRef.current &&
+      !headerRef.current.contains(e.target as Node)
       ) {
         closeNavbar();
       }
@@ -57,7 +60,7 @@ export function Navbar() {
 
   return (
     <div>
-      <Header onToggleNavbar={toggleNavbar} open={navbar} />
+      <Header ref={headerRef} onToggleNavbar={toggleNavbar} open={navbar} />
 
       {/* Mobile backdrop */}
       {navbar && (
