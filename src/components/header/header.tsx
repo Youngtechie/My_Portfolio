@@ -18,6 +18,7 @@ export function Header({ onToggleNavbar, open }: HeaderProps) {
           width={50}
           height={50}
           className="logo"
+          priority 
         />
         <button
           className="menu-toggle"

@@ -101,6 +101,7 @@ export function Navbar() {
             width={50}
             height={50}
             className="absolute top-5"
+            priority
           />
           <ul>
             <Link
