@@ -29,7 +29,6 @@ const ContactPage = () => {
         formRef.current!,
         "FWrgeHDJIQuot0T05"
       );
-
       alert("Message successfully sent!");
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
@@ -54,7 +53,7 @@ const ContactPage = () => {
           <FaLinkedin />
         </Link>
         <Link
-          href="https://x.com/young__techie"
+          href="https://x.com/Noble_Sentinel_?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
           target="_blank"
           rel="noopener noreferrer"
           className="text-3xl text-[#ffcc00] hover:text-[#f4b400] transition-colors"
