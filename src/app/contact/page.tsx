@@ -37,8 +37,8 @@ const ContactPage = () => {
   };
 
   return (
-    <section className="bg-[#151615] text-white flex items-center pt-[150px] lg:pt-0 lg:h-[600px] h-full lg:overflow-hidden overflow-scroll">
-      <div className="w-full max-w-[460px] bg-[#1a1b1a] border border-[#2e2f2e] lg:h-full">
+    <section className="bg-[#151615] text-white flex flex-col items-center lg:pt-0 h-full lg:overflow-hidden overflow-scroll mt-[70px]">
+      <div className="bg-[#1a1b1a] lg:h-full w-full">
 
         {/* Header strip with gold left accent */}
         <div className="border-l-[3px] border-[#ffcc00] lg:rounded-none px-7 pt-7">

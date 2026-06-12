@@ -125,7 +125,7 @@ function CategorySection({ cat, defaultOpen }: { cat: typeof CATEGORIES[0]; defa
 
 export default function MyProjects() {
   return (
-    <section className="text-white bg-[#151615] flex flex-col w-full items-center gap-4 pt-[90px] max-w-[460px] lg:mt-0 p-3 lg:p-6 pb-[100px] lg:w-[450px] lg:h-[600px] overflow-y-auto">
+    <section className="text-white bg-[#151615] flex flex-col w-full items-center gap-4 pt-[90px] max-w-[460px] lg:mt-0 p-3 lg:p-6 pb-[100px] lg:w-[450px] h-full overflow-y-auto">
       <div className="w-full">
         <h1 className="text-xl font-bold border-l-[3px] border-[#ffcc00] pl-3">My Projects</h1>
         <p className="text-[12px] text-white/40 pl-4 mt-0.5">Grouped by discipline</p>

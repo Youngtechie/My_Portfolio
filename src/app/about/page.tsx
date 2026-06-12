@@ -83,7 +83,7 @@ const fadeUp = {
 
 export default function AboutPage() {
   return (
-    <div className="text-white bg-[#151615] flex flex-col items-center gap-7 pt-[90px] w-full max-w-[460px] lg:mt-0 p-3 lg:p-6 pb-[20px] lg:w-[400px] lg:h-[600px] lg:min-h-full min-h-screen overflow-y-auto">
+    <div className="text-white bg-[#151615] flex flex-col items-center gap-7 pt-[90px] w-full h-full max-w-[460px] lg:mt-0 p-3 lg:p-6 pb-[20px] lg:w-[400px] lg:min-h-full min-h-screen overflow-y-auto">
 
       {/* Bio */}
       <motion.section

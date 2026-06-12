@@ -28,7 +28,7 @@ export default function HomeSide({ view }: HomeSlideProps) {
     <div
       className={`${
         view ? "flex bg-none min-Header" : "hidden"
-      } lg:flex flex-col items-center w-full max-w-[460px] bg-[#151615] lg:w-[300px] lg:h-[600px] text-[#fff] z-50 relative lg:py-32 lg:gap-9 justify-center h-full gap-8`}
+      } lg:flex flex-col items-center w-full max-w-[460px] bg-[#151615] lg:w-[300px] text-[#fff] z-50 relative lg:py-32 lg:gap-9 justify-center h-full gap-8`}
     >
       {/* Overlay */}
       <div
