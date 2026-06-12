@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import { Orbitron, Questrial } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar/navbar";
@@ -109,6 +110,8 @@ export default function RootLayout({
             {children}
           </div>
         </main>
+
+        <Analytics />
       </body>
     </html>
   );
