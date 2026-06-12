@@ -105,7 +105,7 @@ export default function RootLayout({
       >
         <main className="lg:flex lg:items-center lg:justify-center w-full h-full">
           <Navbar />
-          <div className="lg:h-[550px] lg:pt-0 flex flex-col lg:flex-row items-center justify-center h-full">
+          <div className="lg:h-[550px] lg:pt-0 flex flex-col lg:flex-row items-center lg:justify-center h-full">
             <HomeSide view={false} />
             {children}
           </div>

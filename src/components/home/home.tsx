@@ -27,8 +27,8 @@ export default function HomeSide({ view }: HomeSlideProps) {
   return (
     <div
       className={`${
-        view ? "flex bg-none min_Header" : "hidden"
-      } lg:flex flex-col items-center w-full max-w-[460px] bg-[#151615] lg:w-[300px] lg:h-[600px] text-[#fff] z-50 relative lg:py-32 lg:gap-9 justify-center h-[100vh] `}
+        view ? "flex bg-none min-Header" : "hidden"
+      } lg:flex flex-col items-center w-full max-w-[460px] bg-[#151615] lg:w-[300px] lg:h-[600px] text-[#fff] z-50 relative lg:py-32 lg:gap-9 justify-center h-full gap-8`}
     >
       {/* Overlay */}
       <div
@@ -42,7 +42,7 @@ export default function HomeSide({ view }: HomeSlideProps) {
       <span className="hs-corner br" />
 
       {/* Icons row */}
-      <div className="flex gap-4 z-20 relative mb-5">
+      <div className="flex gap-4 z-20 relative">
         {[faCode, faShieldHalved, faMicrochip].map((icon, i) => (
           <div key={i} className="hs-icon-box">
             <FontAwesomeIcon icon={icon} />
@@ -97,7 +97,7 @@ export default function HomeSide({ view }: HomeSlideProps) {
       </div>
 
       {/* Cycling tagline */}
-      <h3 className="hs-tagline z-50 mt-5" style={{ minHeight: "2em" }}>
+      <h3 className="hs-tagline z-50" style={{ minHeight: "2em" }}>
         <Typewriter
           words={["Innovator", "Problem Solver", "Creative Thinker"]}
           typeSpeed={100}
