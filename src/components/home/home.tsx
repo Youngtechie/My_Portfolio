@@ -13,7 +13,7 @@ interface HomeSlideProps {
   view: boolean;
 }
 
-const CERTS = ["CompTIA A+", "CompTIA Security+", "CEH", "CND", "Digital Literacy"];
+const CERTS = ["CompTIA A+", "CompTIA Security+", "CEH", "CompTIA N+", "Digital Literacy"];
 const ROLES = ["Certified Fullstack Developer", "Certified Ethical Hacker", "Certified Cybersecurity Analyst"];
 
 export default function HomeSide({ view }: HomeSlideProps) {
@@ -28,7 +28,7 @@ export default function HomeSide({ view }: HomeSlideProps) {
     <div
       className={`${
         view ? "flex bg-none min_Header" : "hidden"
-      } lg:flex flex-col items-center w-full max-w-[460px] bg-[#151615] lg:w-[300px] lg:h-[600px] text-[#fff] z-50 relative lg:py-32 lg:gap-20 justify-center h-[100vh] `}
+      } lg:flex flex-col items-center w-full max-w-[460px] bg-[#151615] lg:w-[300px] lg:h-[600px] text-[#fff] z-50 relative lg:py-32 lg:gap-9 justify-center h-[100vh] `}
     >
       {/* Overlay */}
       <div
