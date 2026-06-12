@@ -1,98 +1,185 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs } from "react-icons/fa";
 import {
-  SiTypescript,
-  SiThreedotjs,
-  SiNextdotjs,
-  SiFirebase,
-  SiTailwindcss,
-  SiWagmi,
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs,
+  FaPython, FaLinux, FaGithub,
+} from "react-icons/fa";
+import {
+  SiTypescript, SiThreedotjs, SiNextdotjs,
+  SiFirebase, SiTailwindcss, SiWagmi,
+  SiKalilinux, SiCisco,
 } from "react-icons/si";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faShieldHalved, faNetworkWired,
+  faDesktop, faLock, faGlobe,
+} from "@fortawesome/free-solid-svg-icons";
 
-const AboutPage = () => {
+const TECH = [
+  { Icon: FaHtml5,       name: "HTML5",       color: "#e34f26" },
+  { Icon: FaCss3Alt,     name: "CSS3",        color: "#264de4" },
+  { Icon: FaJs,          name: "JavaScript",  color: "#f0db4f" },
+  { Icon: SiTypescript,  name: "TypeScript",  color: "#3178c6" },
+  { Icon: FaReact,       name: "React",       color: "#61dafb" },
+  { Icon: FaVuejs,       name: "Vue.js",      color: "#42b883" },
+  { Icon: SiNextdotjs,   name: "Next.js",     color: "#ffffff" },
+  { Icon: SiTailwindcss, name: "Tailwind",    color: "#38bdf8" },
+  { Icon: SiFirebase,    name: "Firebase",    color: "#ffca28" },
+  { Icon: SiThreedotjs,  name: "Three.js",    color: "#ffffff" },
+  { Icon: SiWagmi,       name: "Wagmi",       color: "#3c73a8" },
+  { Icon: FaPython,      name: "Python",      color: "#3572A5" },
+  { Icon: FaLinux,       name: "Linux",       color: "#e95420" },
+  { Icon: FaGithub,      name: "GitHub",      color: "#ffffff" },
+];
+
+const CERTS = [
+  {
+    icon: faShieldHalved,
+    name: "Certified Ethical Hacker (CEH)",
+    body: "EC-Council · Offensive security & penetration testing",
+    badge: "EC-Council",
+  },
+  {
+    icon: faNetworkWired,
+    name: "Certified Network Defender (CND)",
+    body: "EC-Council · Network security & defence",
+    badge: "EC-Council",
+  },
+  {
+    icon: faDesktop,
+    name: "CompTIA A+",
+    body: "Hardware, OS, and networking fundamentals",
+    badge: "CompTIA",
+  },
+  {
+    icon: faLock,
+    name: "CompTIA Security+",
+    body: "Threat management & risk mitigation",
+    badge: "CompTIA",
+  },
+  {
+    icon: faGlobe,
+    name: "Digital Literacy Certificate",
+    body: "Core digital skills & internet safety",
+    badge: "Certified",
+  },
+];
+
+const TOOLS = [
+  { Icon: SiKalilinux, name: "Kali Linux",           desc: "Penetration testing OS",              tag: "Ethical Hacking", color: "#557C94" },
+  { Icon: SiCisco,     name: "Cisco Packet Tracer",  desc: "Network simulation & design",         tag: "Networking",      color: "#1ba0d7" },
+  { Icon: FaPython,    name: "Python",               desc: "Scripting & security automation",     tag: "Scripting",       color: "#3572A5" },
+  { Icon: FaLinux,     name: "Linux",                desc: "System administration & CLI",         tag: "OS",              color: "#e95420" },
+  { Icon: FaGithub,    name: "GitHub",               desc: "Version control & open source",       tag: "DevOps",          color: "#ffffff" },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.07, ease: "easeOut", duration: 0.5 },
+  }),
+};
+
+export default function AboutPage() {
   return (
-    <div className="text-white bg-[#151615] flex flex-col w-full items-center space-y-6 pt-[90px] lg:mt-0 p-3 lg:p-6 pb-[100px] lg:w-[450px] lg:h-full lg:min-h-full min-h-screen overflow-y-auto">
-      <div>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-5"
-        >
-          <h1 className="text-3xl font-bold tracking-tight">About Me</h1>
-        </motion.div>
+    <div className="text-white bg-[#151615] flex flex-col items-center gap-7 pt-[90px] w-full max-w-[460px] lg:mt-0 p-3 lg:p-6 pb-[20px] lg:w-[400px] lg:h-[600px] lg:min-h-full min-h-screen overflow-y-auto">
 
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0, x: -50 },
-            visible: {
-              opacity: 1,
-              x: 0,
-              transition: { staggerChildren: 0.2, ease: "easeOut" },
-            },
-          }}
-          className="flex flex-col lg:flex-row items-center"
-        >
-          <motion.div className="space-y-2 max-w-md leading-relaxed">
-            <motion.p>
-              Hi there! I&#39;m a Front-End Developer driven by a passion for
-              creating engaging, responsive web experiences. Proficient in HTML,
-              CSS, and JavaScript, I also bring expertise in frameworks like
-              React, Vue, and Next.js, blending creativity with efficiency in
-              every project.
-            </motion.p>
-            <motion.p>
-              With each collaboration, I&#39;ve gained insights and refined my
-              skills, building a portfolio that reflects my dedication to
-              quality and innovation. I&#39;m always excited to explore emerging
-              technologies and take my craft to the next level.
-            </motion.p>
-          </motion.div>
+      {/* Bio */}
+      <motion.section
+        initial="hidden" animate="visible"
+        variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+        className="w-full flex flex-col gap-3"
+      >
+        <motion.div variants={fadeUp} custom={0}>
+          <h1 className="text-xl font-bold tracking-tight border-l-[3px] border-[#ffcc00] pl-3">
+            About Me
+          </h1>
+          <p className="text-xs text-white/50 pl-4 mt-0.5">Fullstack Developer · Security Engineer</p>
         </motion.div>
-      </div>
+        <motion.div variants={fadeUp} custom={1} className="flex flex-col gap-2 text-[13px] text-white/65 leading-relaxed">
+          <p>
+            I&#39;m <span className="text-[#ffcc00] font-semibold">Abdul-Rahmon Olaegbe</span> — a fullstack
+            web developer and certified cybersecurity professional. I build fast, responsive web
+            applications and secure digital systems, blending engineering depth with a hacker&#39;s mindset.
+          </p>
+          <p>
+            Beyond the browser, I work in <span className="text-white/80">Kali Linux</span> for penetration
+            testing, use <span className="text-white/80">Cisco Packet Tracer</span> for network simulation,
+            and write <span className="text-white/80">Python</span> scripts for security automation and tooling.
+          </p>
+        </motion.div>
+      </motion.section>
 
-      <section>
-        <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="text-3xl font-semibold mb-4"
-        >
-          Tech Stack
-        </motion.h2>
-        <div className="flex flex-wrap justify-center gap-8 mb-5">
-          {[
-            { Icon: FaHtml5, name: "HTML" },
-            { Icon: FaCss3Alt, name: "CSS" },
-            { Icon: FaJs, name: "JavaScript" },
-            { Icon: FaReact, name: "React" },
-            { Icon: FaVuejs, name: "Vue" },
-            { Icon: SiNextdotjs, name: "Next.js" },
-            { Icon: SiFirebase, name: "Firebase" },
-            { Icon: SiTailwindcss, name: "TailwindCSS" },
-            { Icon: SiThreedotjs, name: "Three.js" },
-            { Icon: SiTypescript, name: "Typescript" },
-            { Icon: SiWagmi, name: "Wagmi" },
-          ].map((tech, index) => (
+      {/* Certifications */}
+      <section className="w-full flex flex-col gap-3">
+        <h2 className="text-base font-bold border-l-[3px] border-[#ffcc00] pl-3">Certifications</h2>
+        <div className="flex flex-col gap-2">
+          {CERTS.map((c, i) => (
             <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: index * 0.1 }}
-              className="flex flex-col items-center cursor-pointer"
+              key={c.name}
+              custom={i} initial="hidden" whileInView="visible"
+              viewport={{ once: true }} variants={fadeUp}
+              className="flex items-center gap-3 p-3 bg-[#1a1b1a] border border-[#2a2b2a] rounded-xl hover:border-[#ffcc00]/40 transition-colors"
             >
-              <tech.Icon className="text-4xl text-indigo-500 mb-2" />
-              <p>{tech.name}</p>
+              <div className="w-8 h-8 rounded-lg bg-[#ffcc00]/10 border border-[#ffcc00]/25 flex items-center justify-center text-[#ffcc00] text-sm flex-shrink-0">
+                <FontAwesomeIcon icon={c.icon} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-[12px] font-semibold text-white leading-tight">{c.name}</p>
+                <p className="text-[11px] text-white/45 leading-tight mt-0.5">{c.body}</p>
+              </div>
+              <span className="text-[9px] px-2 py-1 rounded-full bg-[#ffcc00]/10 text-[#ffcc00] border border-[#ffcc00]/30 whitespace-nowrap flex-shrink-0">
+                {c.badge}
+              </span>
             </motion.div>
           ))}
         </div>
       </section>
+
+      {/* Tech Stack */}
+      <section className="w-full flex flex-col gap-3">
+        <h2 className="text-base font-bold border-l-[3px] border-[#ffcc00] pl-3">Tech Stack</h2>
+        <div className="grid grid-cols-4 gap-2">
+          {TECH.map((t, i) => (
+            <motion.div
+              key={t.name}
+              custom={i} initial="hidden" whileInView="visible"
+              viewport={{ once: true }} variants={fadeUp}
+              className="flex flex-col items-center gap-1.5 py-3 px-2 bg-[#1a1b1a] border border-[#2a2b2a] rounded-xl hover:border-[#ffcc00]/40 transition-colors cursor-default"
+            >
+              <t.Icon style={{ color: t.color, fontSize: "22px" }} />
+              <span className="text-[9px] text-white/50 text-center leading-tight">{t.name}</span>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Security & Networking Tools */}
+      <section className="w-full flex flex-col gap-3">
+        <h2 className="text-base font-bold border-l-[3px] border-[#ffcc00] pl-3">Security &amp; Networking Tools</h2>
+        <div className="flex flex-col gap-2">
+          {TOOLS.map((t, i) => (
+            <motion.div
+              key={t.name}
+              custom={i} initial="hidden" whileInView="visible"
+              viewport={{ once: true }} variants={fadeUp}
+              className="flex items-center gap-3 p-3 bg-[#1a1b1a] border border-[#2a2b2a] rounded-xl hover:border-[#ffcc00]/40 transition-colors"
+            >
+              <t.Icon style={{ color: t.color, fontSize: "18px", flexShrink: 0 }} />
+              <div className="flex-1 min-w-0">
+                <span className="text-[12px] text-white/70">
+                  <span className="text-white/90 font-medium">{t.name}</span> — {t.desc}
+                </span>
+              </div>
+              <span className="text-[9px] px-2 py-1 rounded-full border border-[#2a2b2a] text-white/35 whitespace-nowrap flex-shrink-0">
+                {t.tag}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
     </div>
   );
-};
-
-export default AboutPage;
+}
