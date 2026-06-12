@@ -2,73 +2,119 @@
 import { Typewriter } from "react-simple-typewriter";
 import { useState, useEffect } from "react";
 import "./home.css";
-import { faLaptopCode, faPalette, faRocket } from "@fortawesome/free-solid-svg-icons";
+import {
+  faShieldHalved,
+  faCode,
+  faMicrochip,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface HomeSlideProps {
-    view: boolean; // Specify the function type
-  }
-  
+  view: boolean;
+}
 
-export default function HomeSide({view}: HomeSlideProps) {
+const CERTS = ["CompTIA A+", "CompTIA Security+", "CEH", "CND", "Digital Literacy"];
+const ROLES = ["Certified Fullstack Developer", "Certified Ethical Hacker", "Certified Cybersecurity Analyst"];
+
+export default function HomeSide({ view }: HomeSlideProps) {
   const [showTitle, setShowTitle] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowTitle(true);
-    }, 2500);
+    const timer = setTimeout(() => setShowTitle(true), 2200);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className={`${view ? 'flex bg-none min_Header w-[100vw]': 'hidden'} lg:flex flex-col items-center  lg:w-[300px] lg:h-[600px] bg-[url('/bg.png')] bg-cover bg-center bg-no-repeat text-[#fff] lg:shadow-lg lg:shadow-[#1f1e1e] z-50 relative lg:py-32 lg:gap-20 justify-center gap-20`}>
-      <div className={`${!view? 'absolute inset-0 bg-black opacity-50 z-10 rounded-xl': ''} `}></div>
+    <div
+      className={`${
+        view ? "flex bg-none min_Header" : "hidden"
+      } lg:flex flex-col items-center w-full max-w-[460px] bg-[#151615] lg:w-[300px] lg:h-[600px] text-[#fff] z-50 relative lg:py-32 lg:gap-20 justify-center h-[100vh] `}
+    >
+      {/* Overlay */}
+      <div
+        className={`${!view ? "absolute inset-0 bg-black opacity-60 z-10" : ""}`}
+      />
 
-      <div className="flex gap-5 z-20 relative">
-        <FontAwesomeIcon icon={faLaptopCode} className="icon-style" size="2x" />
-        <FontAwesomeIcon icon={faPalette} className="icon-style" size="2x" />
-        <FontAwesomeIcon icon={faRocket} className="icon-style" size="2x" />
+      {/* Corner brackets */}
+      <span className="hs-corner tl" />
+      <span className="hs-corner tr" />
+      <span className="hs-corner bl" />
+      <span className="hs-corner br" />
+
+      {/* Icons row */}
+      <div className="flex gap-4 z-20 relative mb-5">
+        {[faCode, faShieldHalved, faMicrochip].map((icon, i) => (
+          <div key={i} className="hs-icon-box">
+            <FontAwesomeIcon icon={icon} />
+          </div>
+        ))}
       </div>
 
-      <div className="flex flex-col gap-4 z-20 relative text-center items-center">
-        <div className="animated-line"></div> {/* Top dotted line */}
-        <h1 className="font-bold text-xl" style={{ minHeight: "2em" }}>
+      {/* Name + title block */}
+      <div className="flex flex-col gap-2.5 z-20 relative text-center items-center w-full px-4">
+        <div className="animated-line" />
+
+        <h1 className="hs-name" style={{ minHeight: "2em" }}>
           <Typewriter
             words={["ABDUL-RAHMON OLAEGBE"]}
-            typeSpeed={70}
-            deleteSpeed={50}
+            typeSpeed={60}
+            deleteSpeed={40}
             delaySpeed={500}
           />
         </h1>
-        <h2
-          className="font-bold text-sm transition transform hover:scale-105 duration-200"
-          style={{ minHeight: "1.5em" }}
-        >
+
+        <h2 className="hs-subtitle text-[#ffcc00]" style={{ minHeight: "1.4em" }}>
           {showTitle && (
             <Typewriter
-              words={["FRONT-END DEVELOPER"]}
-              typeSpeed={70}
-              deleteSpeed={50}
+              words={["> FULLSTACK DEV & SECURITY ENG"]}
+              typeSpeed={50}
+              deleteSpeed={30}
               delaySpeed={5000}
+              loop
+              cursor
             />
           )}
         </h2>
-        <div className="animated-line"></div> {/* Bottom dotted line */}
+
+        {/* Cert badges */}
+        <div className="hs-certs">
+          {CERTS.map((c) => (
+            <span key={c} className="hs-cert">{c}</span>
+          ))}
+        </div>
+
+        {/* Roles */}
+        <ul className="hs-roles">
+          {ROLES.map((r) => (
+            <li key={r} className="hs-role list-style-none">
+              <span className="hs-role-dot" />
+              {r}
+            </li>
+          ))}
+        </ul>
+
+        <div className="animated-line" />
       </div>
 
-      {/* Scrolling Text Below */}
-      <h3
-        className="font-bold text-2xl justify-self-end bottom-12 z-50"
-        style={{ minHeight: "2em" }}
-      >
+      {/* Cycling tagline */}
+      <h3 className="hs-tagline z-50 mt-5" style={{ minHeight: "2em" }}>
         <Typewriter
           words={["Innovator", "Problem Solver", "Creative Thinker"]}
           typeSpeed={100}
           deleteSpeed={30}
           delaySpeed={1000}
-          loop={true}
+          loop
+          cursor
+          cursorColor="#fff"
+          cursorStyle="|"
         />
       </h3>
+
+      {/* Status indicator */}
+      <div className="hs-status z-20">
+        <span className="hs-status-dot" />
+        AVAILABLE FOR WORK
+      </div>
     </div>
   );
 }

@@ -1,7 +1,17 @@
+:root {
+  --color-accent: #ffcc00;
+  --color-accent-dim: rgba(255, 204, 0, 0.07);
+  --color-accent-border: rgba(255, 204, 0, 0.35);
+  --color-text-primary: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+  --color-text-hint: rgba(255, 255, 255, 0.4);
+  --color-status-green: #4cdf8a;
+}
+
 .animated-line {
   width: 100px;
-  height: 2px;
-  border-bottom: 2px dotted rgba(255, 255, 255, 0.7); /* Dotted line style */
+  height: 3px;
+  border-bottom: 2px dotted var(--color-accent); /* Dotted line style */
   margin: 8px 0;
   animation: pulseLine 2s infinite;
 }
@@ -35,9 +45,139 @@
     opacity: 1;
   }
 }
-.general_bg {
-  background-image: url("/general_bg.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
+/* Corner brackets */
+.hs-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--color-accent);
+  border-style: solid;
+  z-index: 20;
+}
+.hs-corner.tl { top: 10px; left: 10px; border-width: 1.5px 0 0 1.5px; }
+.hs-corner.tr { top: 10px; right: 10px; border-width: 1.5px 1.5px 0 0; }
+.hs-corner.bl { bottom: 10px; left: 10px; border-width: 0 0 1.5px 1.5px; }
+.hs-corner.br { bottom: 10px; right: 10px; border-width: 0 1.5px 1.5px 0; }
+
+/* Icon boxes */
+.hs-icon-box {
+  width: 38px;
+  height: 38px;
+  border: 0.5px solid rgba(255, 204, 0, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 204, 0, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffcc00;
+  font-size: 15px;
+}
+
+/* Name */
+.hs-name {
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Subtitle */
+.hs-subtitle {
+  font-family: monospace;
+  font-size: 13px;
+  color: #ffcc00;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.hs-subtitle span {
+  color: #ffcc00;
+}
+
+/* Cert badges */
+.hs-certs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.hs-cert {
+  font-family: monospace;
+  font-size: 11px;
+  padding: 3px 8px;
+  border: 0.5px solid rgba(255, 204, 0, 0.35);
+  border-radius: 4px;
+  color: #ffcc00;
+  background: rgba(255, 204, 0, 0.06);
+  letter-spacing: 0.5px;
+}
+
+/* Roles list */
+.hs-roles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.hs-role {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.5px;
+}
+
+.hs-role-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffcc00;
+  flex-shrink: 0;
+}
+
+/* Tagline */
+.hs-tagline {
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  text-align: center;
+}
+
+/* Status */
+.hs-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 1px;
+  position: absolute;
+  bottom: 16px;
+}
+
+.hs-status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4cdf8a;
+  animation: statusPulse 2s ease infinite;
+  flex-shrink: 0;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
