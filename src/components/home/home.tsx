@@ -28,12 +28,8 @@ export default function HomeSide({ view }: HomeSlideProps) {
     <div
       className={`${
         view ? "flex bg-none " : "hidden"
-      } lg:flex flex-col items-center w-full max-w-[460px] bg-[#151615] lg:w-[300px] text-[#fff] z-50 relative lg:py-32 lg:gap-9 justify-evenly lg:justify-center h-full`}
+      } lg:flex flex-col items-center w-full max-w-[460px] bg-[#151615] lg:w-[300px] text-[#fff] z-50 relative justify-around h-full`}
     >
-      {/* Overlay */}
-      <div
-        className={`${!view ? "absolute inset-0 bg-black opacity-60 z-10" : ""}`}
-      />
 
       {/* Corner brackets */}
       <span className="hs-corner tl" />
